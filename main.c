@@ -25,7 +25,6 @@ int main(){
         printf("\nPodaj słowo do kodowania: ");
         getchar();
         fgets(text, sizeof(text), stdin); 
-        system("clear");
         if(d==1){
             MorseCode(text);
         }
@@ -47,7 +46,6 @@ int main(){
         printf("\nPodaj słowo do kodowania: ");
         getchar();
         fgets(text, sizeof(text), stdin); 
-        system("clear");
        if(d=1){
             MorseDeCode(text);
         }
