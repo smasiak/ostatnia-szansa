@@ -1,71 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "lib.h"
+#include "funkcje_male.c"
 
-
-/* FUNKCJE POMOCNICZE */
-
-// Wielkie litery
-void uppercase (char *string)
-{
-  while ( *string != '\0' ) 
-  {
-    *string = toupper ( ( unsigned char ) *string );
-    ++string;
-  }
-}
-// Wzor szyfru afinicznego
-int AffinePattern(int i, int a, int b)
-{
-    int x,y;
-    x = i;
-    y = (a*x+b)%26;
-    return y;
-}
-// Wzor deszyfujacy szyfr afiniczny
-int AffineDePattern(int i, int a, int b) 
-{
-    int x = i;
-    int inv = InverseElement(a,26);
-    int y = inv*(x-b);
-    int result = PositiveModulo(y,26);
-    return result;
-}
-// Pozytywne modulo (nieujemne)
-int PositiveModulo( int a, int m) 
-{
-    int mod = a % m;
-    if (a < 0) // gdy a jest ujemne to dodaje jeszcze raz m;
-    {
-        mod += m;
-    }
-    return mod;
-}
-// Element odwrotny w pierscieniu m
-int InverseElement(int a, int m) 
-{
-    a = a % m;
-    for(int i=1; i<m; i++)
-    {
-        if((i*a)%m == 1)
-        {
-            return i;
-            break;
-        }
-    }
-    return 0; 
-}
-
-
-
-
-
-/* FUNKCJE SZYFRUJACE */
-
-// Kodowanie alfabet Morse'a
-void MorseCode(char *string)
-{
+void MorseCode(char *string){
     char *WordToMorse[1000];
     char *MorseCode[59] = {
     ".-", // A
@@ -314,8 +252,8 @@ void MorseCode(char *string)
                 break;
         }
     }
-    printf("Wczytany tekst     --->    %s", string);
-    printf("Zakodowany tekst   --->    ");
+    printf("Słowo pobrane    %s", string);
+    printf("Słowo zakodowane    ");
 
        for(int i=0; i<stringLength; i++)
        {
@@ -330,8 +268,8 @@ void MorseCode(char *string)
 }
 void MorseDeCode(char *string){
     
-    printf("Wczytany tekst     --->    %s", string);
-    printf("Odkodowany tekst   --->    ");
+    printf("Słowo pobrane    %s", string);
+    printf("Słowo zakodowane    ");
     char t[]= "%TEMNAIOGKDWRUS-.QZYCXBJP%L-FVH09%8%%%7%%%%%%%61%%%%%%%2%%%3%45";
     int stringLength = strlen(string)-1;
     int i, j = 0;
@@ -359,9 +297,7 @@ void MorseDeCode(char *string){
 
 }
 
-// Kodowanie szyfr Cezara
-void CaesarCipher(char *string)
-{
+void CaesarCipher(char *string){
     char character; // jedna litera
     int stringLength = strlen(string)-1; // długosc napisu liczona od 0;
     char caesar[10000]; // tablica ktora będzie przechowywać zaszyfrowany tekst 
@@ -381,16 +317,11 @@ void CaesarCipher(char *string)
 			caesar[i] = character;
 		}
 	}
-
-    printf("Wczytany tekst      --->    %s", string);
-    printf("Zaszyfrowany tekst  --->    %s", caesar);
-
+    printf("Słowo pobrane    %s", string);
+    printf("Słowo zakodowane %s", caesar);
     
 }
-
-// Dekodowanie szyfru Cezara
-void CaesarDeCipher(char *string)
-{
+void CaesarDeCipher(char *string){
     char character; // jedna litera
     int stringLength = strlen(string)-1; // długosc napisu liczona od 0;
     char caesar[10000]; // tablica ktora będzie przechowywać zaszyfrowany tekst 
@@ -411,14 +342,12 @@ void CaesarDeCipher(char *string)
 		}
 	}
 
-   printf("Wczytany tekst      --->    %s", string);
-   printf("Odszyfrowany tekst  --->    %s", caesar);
+    printf("Słowo pobrane    %s", string);
+    printf("Słowo zakodowane %s", caesar);
 
 }
 
-// Szyfr afiniczny
-void AffineCipher(char *string, int a, int b)
-{   
+void AffineCipher(char *string, int a, int b){  
     char *AffineCipher[10000];
     int y=0;
     char *Alphabet[27] = 
@@ -549,9 +478,8 @@ void AffineCipher(char *string, int a, int b)
                 break;
         } 
     }
-
-   printf("Wczytany tekst      --->    %s", string);
-   printf("Zaszyfrowany tekst  --->    ");
+      printf("Słowo pobrane    %s", string);
+    printf("Słowo zakodowane ");
 
        for(int i=0; i<stringLength; i++)
        {
@@ -564,8 +492,7 @@ void AffineCipher(char *string, int a, int b)
        }
 }
 
-void AffineDeCipher(char *string, int a, int b)
-{   
+void AffineDeCipher(char *string, int a, int b){   
     char *AffineDeCipher[10000];
     int y = 0;
     char *Alphabet[27] = 
@@ -698,9 +625,8 @@ void AffineDeCipher(char *string, int a, int b)
                 break;
         } 
     }
-
-    printf("Wczytany tekst      --->    %s", string);
-    printf("Odszyfrowany tekst  --->    ");
+    printf("Słowo pobrane    %s", string);
+    printf("Słowo zakodowane ");
        for(int i=0; i<stringLength; i++)
        {
            if(i==stringLength-1)
