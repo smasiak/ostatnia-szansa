@@ -11,13 +11,12 @@ int main(){
     int b;
     char text[1000];
     printf("Witam w programie do kodowania. Wybierz jedną w powniższych opcji.");
-    printf("\n1. szyfrowanie \n2. odszyfrowanie");
+    printf("\n1.szyfrowanie \n2.odszyfrowanie\n");
     scanf("%d", &c);
-    system("clear");
     
     if(c==1){
         printf("Wybierz kod/szyfr");
-        printf("\n1.alfabet morse's \n2.szyfr cezara \n3.szyfr anachroniczny");
+        printf("\n1.alfabet morse's \n2.szyfr cezara \n3.szyfr anachroniczny\n");
         scanf("%d", &d);
         printf("\nPodaj słowo do kodowania: ");
         getchar();
