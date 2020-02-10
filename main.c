@@ -49,9 +49,9 @@ int main(){
             CaesarDeCipher(text);
         }   
         else if(d==3){
-            printf("Wpisz A : ");
+            printf("Wpisz liczbę A : ");
             scanf("%d",&a);
-            printf("Wpisz B : ");
+            printf("Wpisz liczbę B : ");
             scanf("%d",&b);
             AffineDeCipher(text , a, b);
         }
