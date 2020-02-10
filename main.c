@@ -9,16 +9,13 @@ int main(){
     int d;
     int a;
     int b;
-    int e;
-    int f;
-    char *string;
     char text[1000];
     printf("Witam w programie do kodowania. Wybierz jedną w powniższych opcji.");
     printf("\n1. szyfrowanie \n2. odszyfrowanie");
     scanf("%d", &c);
     system("clear");
     
-    if(c=1){
+    if(c==1){
         printf("Wybierz kod/szyfr");
         printf("\n1.alfabet morse's \n2.szyfr cezara \n3.szyfr anachroniczny");
         scanf("%d", &d);
@@ -28,36 +25,36 @@ int main(){
         if(d==1){
             MorseCode(text);
         }
-        else if(d=2){
+        else if(d==2){
             CaesarCipher(text);
         }   
-        else if(d=3){
-            printf("[*] Wprowadź A : ");
-            scanf("%d",&e);
-            printf("[*] Wprowadź B : ");
-            scanf("%d",&f);
-            AffineCipher(string , a, b);
+        else if(d==3){
+            printf("Wprowadź A : ");
+            scanf("%d",&a);
+            printf("Wprowadź B : ");
+            scanf("%d",&b);
+            AffineCipher(text , a, b);
         }
     }
-    else if(c=2){
+    else if(c==2){
         printf("Wybierz kod/szyfr");
         printf("\n1.alfabet morse's \n2.szyfr cezara \n3.szyfr anachroniczny");
         scanf("%d", &d);
         printf("\nPodaj słowo do kodowania: ");
         getchar();
         fgets(text, sizeof(text), stdin); 
-       if(d=1){
+       if(d==1){
             MorseDeCode(text);
         }
-        if(d=2){
+        if(d==2){
             CaesarDeCipher(text);
         }   
-        else if(d=3){
+        else if(d==3){
             printf("Wpisz A : ");
-            scanf("%d",&e);
+            scanf("%d",&a);
             printf("Wpisz B : ");
-            scanf("%d",&f);
-            AffineDeCipher(text , e, f);
+            scanf("%d",&b);
+            AffineDeCipher(text , a, b);
         }
     }
     return 0;
